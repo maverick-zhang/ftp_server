@@ -20,12 +20,13 @@ private:
     //任务链表,需要线程安全,因此需要一个互斥锁
     std::mutex task_lock;
     std::list<XTask*> task_list;
+    //线程入口函数
+    void start();
 
 public:
     //线程初始化
     void thread_init();
-    //线程入口函数
-    void start();
+    void activate_cb_in_thread(evutil_socket_t sock_fd, short what);
     //线程激活
     void activate();
     //添加线程处理任务

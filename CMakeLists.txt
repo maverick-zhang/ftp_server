@@ -9,5 +9,5 @@ include_directories(${PROJECT_SOURCE_DIR}/include)
 set(LIBRARY_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/lib)
 link_directories(${PROJECT_SOURCE_DIR}/lib)
 
-add_executable(ftp_server ${DIR_SRCS} include/XTask.h src/XFTPServerCMD.cpp include/XFTPServerCMD.h)
+add_executable(ftp_server ${DIR_SRCS} )
 target_link_libraries(ftp_server libevent.so libz.so pthread)

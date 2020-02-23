@@ -10,6 +10,7 @@ class XTask {
 public:
     struct event_base *base = nullptr;
     int sock_fd = 0;
+    int t_id = 0;
     virtual bool init_task() = 0;
 };
 

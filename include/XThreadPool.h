@@ -13,7 +13,6 @@
 
 class XThreadPool {
 public:
-    static XThreadPool* thread_pool;
     static XThreadPool* get_thread_pool();
 
     //采用轮询的方法分发线程
@@ -22,6 +21,7 @@ public:
 
     ~XThreadPool();
 private:
+    static XThreadPool* thread_pool;
     std::vector<XThread*> threads;
     int last_used_thread = -1;
 

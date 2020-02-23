@@ -19,7 +19,9 @@ XThreadPool *XThreadPool::get_thread_pool() {
 
 XThreadPool::XThreadPool() :threads(){
     for (int i = 0; i < THREADS_NUMBER ; ++i) {
+        //创建线程池中的线程
         XThread *t = new XThread();
+        //对线程进行初始化
         t->thread_init();
         t->set_id(i);
         threads.push_back(t);
@@ -44,6 +46,7 @@ void XThreadPool::dispatch(XTask *task) {
 
     }
     int t_id = (last_used_thread+1) % THREADS_NUMBER;
+    last_used_thread += 1;
     XThread *x_thread = threads[t_id];
 
     //添加任务激活线程
@@ -59,3 +62,4 @@ XThreadPool::ThreadPoolAutoFree::~ThreadPoolAutoFree() {
     delete thread_pool;
     thread_pool = nullptr;
 }
+XThreadPool* XThreadPool::thread_pool = nullptr;
