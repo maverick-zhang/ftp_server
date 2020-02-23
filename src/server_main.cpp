@@ -15,28 +15,27 @@ void listen_cb(struct evconnlistener *, evutil_socket_t, struct sockaddr *, int 
 char ROOT_DIR[64];
 int main(int argc, char *const * argv) {
 
-//    if (argc!=2 )
-//        return -1;
-//    if (strlen(argv[1]) > 63)
-//    {
-//        std::cerr << "路径过长" << std::endl;
-//        return -1;
-//    }
-//    if (access(argv[1], 6) < 0)
-//    {
-//        std::cerr << "目录文件不存在，或无权限" << std::endl;
-//        return -1;
-//    }
-//    struct stat s_buf {};
-//    stat(argv[1], &s_buf);
-//    if (!S_ISDIR(s_buf.st_mode))
-//    {
-//        std::cerr << "非目录" << std::endl;
-//        return -1;
-//    }
-//    strcpy(ROOT_DIR, argv[1]);
+    if (argc!=2 )
+        return -1;
+    if (strlen(argv[1]) > 63)
+    {
+        std::cerr << "路径过长" << std::endl;
+        return -1;
+    }
+    if (access(argv[1], 6) < 0)
+    {
+        std::cerr << "目录文件不存在，或无权限" << std::endl;
+        return -1;
+    }
+    struct stat s_buf {};
+    stat(argv[1], &s_buf);
+    if (!S_ISDIR(s_buf.st_mode))
+    {
+        std::cerr << "非目录" << std::endl;
+        return -1;
+    }
+    strcpy(ROOT_DIR, argv[1]);
 
-    strcpy(ROOT_DIR, "/home/maverick/");
 
 
     //初始化线程池
